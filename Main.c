@@ -75,22 +75,24 @@ void changeState(int direction, vec *p){//clockwise from '0 is up' to '3 is left
 	}
 }
 
-void showEnvironment(vec *p){
+void showEnvironment(vec *p, int d){
 	int i,j;
 	system("cls");
-	printf("# ");
-	for(i=0;i<p->size_b+2;i++) printf("# ");
+	printf("%c ",(d==0)?'-':(d==3)?'|':'#');
+	for(i=0;i<p->size_b+1;i++) printf("%c ",(d==0)?'-':'#');
+	printf("%c ",(d==0)?'-':(d==1)?'|':'#');
 	puts("");
 	for(i=0;i<p->size_a+1;i++){
-		printf("# ");
+		printf("%c ",(d==3)?'|':'#');
 		for(j=0;j<p->size_b+1;j++){
 			if((int)round(p->posx)==j && (int)round(p->posy)==i) printf("* ");
 			else printf("  ");
 		}
-		printf("#\n");
+		printf("%c\n",(d==1)?'|':'#');
 	}
-	printf("# ");
-	for(i=0;i<p->size_b+2;i++) printf("# ");
+	printf("%c ",(d==2)?'-':(d==3)?'|':'#');
+	for(i=0;i<p->size_b+1;i++) printf("%c ",(d==2)?'-':'#');
+	printf("%c ",(d==2)?'-':(d==1)?'|':'#');
 	printf("\nPostion: x=%0.4f\ty=%0.4f\nVector: x=%0.4f\ty=%0.4f",p->posx,p->posy,p->x,p->y);
 
 }
@@ -104,9 +106,11 @@ int getDirection(){
 }
 
 void simulate(vec *p){
+	int d;
 	while(1){
-		changeState(getDirection(),p);
-		showEnvironment(p);
+		d=getDirection();
+		changeState(d,p);
+		showEnvironment(p,d);
 		Sleep(50);
 	}
 }
