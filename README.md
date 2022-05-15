@@ -12,3 +12,5 @@ Here are some screenshots...
 2. Give sample input like:
 
 ![image](https://user-images.githubusercontent.com/88626486/168457062-84c402dd-5165-4eb7-b3d4-afaa22ac41eb.png)
+
+3. Apply gravity using arrow keys.
