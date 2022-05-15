@@ -78,20 +78,21 @@ void changeState(int direction, vec *p){//clockwise from '0 is up' to '3 is left
 void showEnvironment(vec *p){
 	int i,j;
 	system("cls");
-	printf("  ");
-	for(i=0;i<p->size_b;i++) printf("# ");
+	printf("# ");
+	for(i=0;i<p->size_b+2;i++) printf("# ");
 	puts("");
-	for(i=0;i<p->size_a;i++){
+	for(i=0;i<p->size_a+1;i++){
 		printf("# ");
-		for(j=0;j<p->size_b;j++){
+		for(j=0;j<p->size_b+1;j++){
 			if((int)round(p->posx)==j && (int)round(p->posy)==i) printf("* ");
 			else printf("  ");
 		}
 		printf("#\n");
 	}
-	printf("  ");
-	for(i=0;i<p->size_b;i++) printf("# ");
-	printf("\nposx=%f\tposy=%f",p->posx,p->posy);
+	printf("# ");
+	for(i=0;i<p->size_b+2;i++) printf("# ");
+	printf("\nPostion: x=%0.4f\ty=%0.4f\nVector: x=%0.4f\ty=%0.4f",p->posx,p->posy,p->x,p->y);
+
 }
 
 int getDirection(){
@@ -117,7 +118,7 @@ vec* inputFromUser(){
 	scanf("%d",&m);
 	printf("Enter the size of the Environment: ");
 	scanf("%d%d",&a,&b);
-	Sleep(3000);
+	Sleep(1500);
 	system("cls");
 	initialize(p,m,a,b);
 	return p;
@@ -132,6 +133,6 @@ int main(){
 INTPUT
 
 1
-20 20
+20 15
 
 */
